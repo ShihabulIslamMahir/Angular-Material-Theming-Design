@@ -1,21 +1,50 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div [class]="theme">
+  <mat-toolbar class="header" fxFlex="100" yPosition="above"  color="primary">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <button mat-button (click)="sidenav.toggle()"><mat-icon>home</mat-icon></button>
+      <p>Dashboard</p>
+       </div>
+      
+    <div fxLayout="row" fxLayoutAlign="end center" fxFlex='100'>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>line_weight</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button (click)="themeChanging('theme-one')" mat-menu-item>Light Theme</button>
+        <button (click)="themeChanging('theme-two')" mat-menu-item>Dark Theme</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
 
-<router-outlet></router-outlet>
+  <mat-sidenav-container class="container" color="accent">
+    <mat-sidenav #sidenav mode="side" opened class="sidenav"  fxHide fxShow.gt-md>
+        <mat-list>
+            <mat-list-item fxLayoutAlign="center"> <div mat-card-avatar class="profile-image"></div></mat-list-item>
+            <mat-list-item>  <mat-card-title>Dobald Trump</mat-card-title>
+            </mat-list-item>
+            <mat-list-item> <mat-icon>dashboard</mat-icon> Dashboard </mat-list-item>
+            <mat-list-item><mat-icon>contacts </mat-icon> Contacts </mat-list-item>
+            <mat-list-item><mat-icon>info </mat-icon> Info </mat-list-item>
+           </mat-list>
+      </mat-sidenav>
+
+    <mat-sidenav-content>
+      <h2>All cards</h2>
+
+      <mat-divider></mat-divider>
+
+      <div fxLayout.sm="column" fxLayout="row wrap" class="container-card">
+        <mat-card class='mr-20' fxFlex.xs="100"  fxFlex.md="45" fxFlex.lg="20" fxFlex.xl="20">card 1</mat-card>
+        <mat-card class='mr-20' fxFlex.xs="100"  fxFlex.md="45" fxFlex.lg="20" fxFlex.xl="20">card 2</mat-card>
+        <mat-card class='mr-20' fxFlex.xs="100"  fxFlex.md="45" fxFlex.lg="20" fxFlex.xl="20">card 3</mat-card>
+        <mat-card class='mr-20' fxFlex.xs="100"  fxFlex.md="45" fxFlex.lg="20" fxFlex.xl="20">card 4</mat-card>
+      </div>
+      <div class="container-card" fxLayoutGap="15px">
+        <button mat-raised-button color="primary">Primary</button>
+        <button mat-raised-button color="accent">Accent</button>
+        <button mat-raised-button color="warn">Warn</button>
+      </div>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
